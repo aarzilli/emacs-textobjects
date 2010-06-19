@@ -131,107 +131,30 @@
 (defun pseudo-motion-interactive-base-an (com kind)
   (pseudo-motion-execute-command-on-region com (pseudo-motion-extend-region-an kind (get-pseudo-motion-region kind))))
 
-(define-key global-map (kbd "C-x W i (")
-  (lambda ()
-    (interactive)
-    (pseudo-motion-interactive-base-in 'copy-region-as-kill ?\()))
+(dolist (ch '(?\( ?\[ ?\{ ?\( ?\" ?\' ?\`))
+  (lexical-let ((ch ch))
+    (define-key global-map
+      (concat "\C-xWi" (string ch))
+      (lambda ()
+	(interactive)
+	(pseudo-motion-interactive-base-in 'copy-region-as-kill ch)))
+    
+    (define-key global-map
+      (concat "\C-xWa" (string ch))
+      (lambda ()
+	(interactive)
+	(pseudo-motion-interactive-base-an 'copy-region-as-kill ch)))
+    
+    (define-key global-map
+      (concat "\C-xwi" (string ch))
+      (lambda ()
+	(interactive)
+	(pseudo-motion-interactive-base-in 'kill-region ch)))
+    
+    (define-key global-map
+      (concat "\C-xwa" (string ch))
+      (lambda ()
+	(interactive)
+	(pseudo-motion-interactive-base-an 'kill-region ch)))))
 
-(define-key global-map (kbd "C-x W i [")
-  (lambda ()
-    (interactive)
-    (pseudo-motion-interactive-base-in 'copy-region-as-kill ?\[)))
 
-(define-key global-map (kbd "C-x W i {")
-  (lambda ()
-    (interactive)
-    (pseudo-motion-interactive-base-in 'copy-region-as-kill ?\{)))
-
-(define-key global-map (kbd "C-x W a (")
-  (lambda ()
-    (interactive)
-    (pseudo-motion-interactive-base-an 'copy-region-as-kill ?\()))
-
-(define-key global-map (kbd "C-x W a [")
-  (lambda ()
-    (interactive)
-    (pseudo-motion-interactive-base-an 'copy-region-as-kill ?\[)))
-
-(define-key global-map (kbd "C-x W a {")
-  (lambda ()
-    (interactive)
-    (pseudo-motion-interactive-base-an 'copy-region-as-kill ?\{)))
-
-(define-key global-map (kbd "C-x W a \"")
-  (lambda ()
-    (interactive)
-    (pseudo-motion-interactive-base-an 'copy-region-as-kill ?\")))
-
-(define-key global-map (kbd "C-x W a \'")
-  (lambda ()
-    (interactive)
-    (pseudo-motion-interactive-base-an 'copy-region-as-kill ?\')))
-
-(define-key global-map (kbd "C-x W a `")
-  (lambda ()
-    (interactive)
-    (pseudo-motion-interactive-base-an 'copy-region-as-kill ?\`)))
-
-(define-key global-map (kbd "C-x w i (")
-  (lambda ()
-    (interactive)
-    (pseudo-motion-interactive-base-in 'kill-region ?\()))
-
-(define-key global-map (kbd "C-x w i [")
-  (lambda ()
-    (interactive)
-    (pseudo-motion-interactive-base-in 'kill-region ?\[)))
-
-(define-key global-map (kbd "C-x w i {")
-  (lambda ()
-    (interactive)
-    (pseudo-motion-interactive-base-in 'kill-region ?\{)))
-
-(define-key global-map (kbd "C-x w i \"")
-  (lambda ()
-    (interactive)
-    (pseudo-motion-interactive-base-in 'kill-region ?\")))
-
-(define-key global-map (kbd "C-x w i \'")
-  (lambda ()
-    (interactive)
-    (pseudo-motion-interactive-base-in 'kill-region ?\')))
-
-(define-key global-map (kbd "C-x w i `")
-  (lambda ()
-    (interactive)
-    (pseudo-motion-interactive-base-in 'kill-region ?\`)))
- 
-(define-key global-map (kbd "C-x w a (")
-  (lambda ()
-    (interactive)
-    (pseudo-motion-interactive-base-an 'kill-region ?\()))
-
-(define-key global-map (kbd "C-x w a [")
-  (lambda ()
-    (interactive)
-    (pseudo-motion-interactive-base-an 'kill-region ?\[)))
-
-(define-key global-map (kbd "C-x w a {")
-  (lambda ()
-    (interactive)
-    (pseudo-motion-interactive-base-an 'kill-region ?\{)))
-
-(define-key global-map (kbd "C-x w a \"")
-  (lambda ()
-    (interactive)
-    (pseudo-motion-interactive-base-an 'kill-region ?\")))
-
-(define-key global-map (kbd "C-x w a \'")
-  (lambda ()
-    (interactive)
-    (pseudo-motion-interactive-base-an 'kill-region ?\')))
-
-(define-key global-map (kbd "C-x w a `")
-  (lambda ()
-    (interactive)
-    (pseudo-motion-interactive-base-an 'kill-region ?\`)))
