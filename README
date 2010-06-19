@@ -1,0 +1,22 @@
+This is a rudimentary of a vim-like text objects functionality for emacs.
+For people unfamiliar with vim, text objects are a way of specifying a chunk of text around the cursor with few keystrokes while cutting or copying.
+
+Currently supported text objects are:
+
+i(     text inside parenthesis
+a(     like "i(" but including surrounding "(" and ")"
+i[     text inside brackets
+a[     like "i[" but including surrounding "[" and "]"
+i{     text inside braces
+a{     like "i{" but including surrounding "{" and "}"
+i"     text inside double quotes
+a"     like "i"" but including surrounding double quotes
+i'     text inside single quotes
+a'     like "i'" but including surrounding quotes
+i`     text inside backquotes
+a`     like "i`" but including surrounding backquotes
+
+Defined sequences are:
+
+C-x w <text object>        cuts the specified text object
+C-x W <text object>        copies the specified text object

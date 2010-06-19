@@ -161,6 +161,21 @@
     (interactive)
     (pseudo-motion-interactive-base-an 'copy-region-as-kill ?\{)))
 
+(define-key global-map (kbd "C-x W a \"")
+  (lambda ()
+    (interactive)
+    (pseudo-motion-interactive-base-an 'copy-region-as-kill ?\")))
+
+(define-key global-map (kbd "C-x W a \'")
+  (lambda ()
+    (interactive)
+    (pseudo-motion-interactive-base-an 'copy-region-as-kill ?\')))
+
+(define-key global-map (kbd "C-x W a `")
+  (lambda ()
+    (interactive)
+    (pseudo-motion-interactive-base-an 'copy-region-as-kill ?\`)))
+
 (define-key global-map (kbd "C-x w i (")
   (lambda ()
     (interactive)
@@ -175,6 +190,21 @@
   (lambda ()
     (interactive)
     (pseudo-motion-interactive-base-in 'kill-region ?\{)))
+
+(define-key global-map (kbd "C-x w i \"")
+  (lambda ()
+    (interactive)
+    (pseudo-motion-interactive-base-in 'kill-region ?\")))
+
+(define-key global-map (kbd "C-x w i \'")
+  (lambda ()
+    (interactive)
+    (pseudo-motion-interactive-base-in 'kill-region ?\')))
+
+(define-key global-map (kbd "C-x w i `")
+  (lambda ()
+    (interactive)
+    (pseudo-motion-interactive-base-in 'kill-region ?\`)))
  
 (define-key global-map (kbd "C-x w a (")
   (lambda ()
@@ -190,4 +220,18 @@
   (lambda ()
     (interactive)
     (pseudo-motion-interactive-base-an 'kill-region ?\{)))
-  
+
+(define-key global-map (kbd "C-x w a \"")
+  (lambda ()
+    (interactive)
+    (pseudo-motion-interactive-base-an 'kill-region ?\")))
+
+(define-key global-map (kbd "C-x w a \'")
+  (lambda ()
+    (interactive)
+    (pseudo-motion-interactive-base-an 'kill-region ?\')))
+
+(define-key global-map (kbd "C-x w a `")
+  (lambda ()
+    (interactive)
+    (pseudo-motion-interactive-base-an 'kill-region ?\`)))
